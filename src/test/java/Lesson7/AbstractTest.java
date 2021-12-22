@@ -1,4 +1,4 @@
-package Lesson6;
+package Lesson7;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterAll;
@@ -9,8 +9,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.logging.LogEntries;
+import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.logging.LogType;
 
 import java.time.Duration;
+import java.util.List;
 
 public class AbstractTest {
     static WebDriver driver;
@@ -44,6 +48,13 @@ public class AbstractTest {
 
     @AfterEach
     void exit2(){
+        LogEntries browserLogs = getDriver().manage().logs().get(LogType.BROWSER);
+        List<LogEntry> allLogRows = browserLogs.getAll();
+        if (allLogRows.size()>0){
+            allLogRows.forEach(logEntry -> {
+                System.out.println(logEntry.getMessage());
+            });
+        }Assertions.assertTrue(true);
         driver.quit();
     }
 

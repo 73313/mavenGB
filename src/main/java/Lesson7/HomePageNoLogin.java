@@ -1,5 +1,7 @@
-package Lesson6;
+package Lesson7;
 
+import io.qameta.allure.Severity;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -30,7 +32,7 @@ public class HomePageNoLogin extends AbstractPage {
     public HomePageNoLogin(WebDriver driver) {
         super(driver);
     }
-
+  // @Step("метод для входа на форму авторизации")
     public HomePageNoLogin goToLoginPage() {
         enter1.click();
         return this;
@@ -48,7 +50,7 @@ public class HomePageNoLogin extends AbstractPage {
     }
 
     public String getLang() {
-       String ln = driver.findElement(By.xpath("//a[contains(text(),'English (en)')]")).getText();
+       String ln = driver.findElement(By.xpath("//a[text()='English (en)']")).getText();
      //   String ln = driver.findElement(By.cssSelector(".s-header-item__link--lang")).getText();
 
         return ln;

@@ -1,5 +1,6 @@
-package Lesson6;
+package Lesson7;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 ;
@@ -8,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 public class LoginPage extends AbstractPage {
 
     //определение локатора поля ввода логина
+
     @FindBy(id = "user")
     private WebElement loginField;
 
@@ -23,18 +25,21 @@ public class LoginPage extends AbstractPage {
         super(driver);
     }
 
-
+   // @Step("метод для ввода логина")
     public LoginPage inputLogin(String login) {
         this.loginField.sendKeys(login);
        return this;
     }
-    //  метод для ввода пароля
+
+   // @Step(" метод для ввода пароля")
     public LoginPage inputPassword(String password) {
         passwordField.click();
         passwordField.sendKeys(password);
         return this;
     }
-    //  метод для осуществления нажатия кнопки входа в аккаунт
+
+
+   // @Step("метод для осуществления нажатия кнопки входа в аккаунт")
     public LoginPage clickSubmit() {
         submit.click();
         return this;
